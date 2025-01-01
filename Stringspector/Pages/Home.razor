@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<h1>Stringspector</h1>
+
+<NextInspectionCard OnSubmit="HandleNewInspection"/>
+
+@if (_inspections.Any())
+{
+    <h2>Inspections</h2>
+    var key = _inspections.Count;
+    foreach (var item in _inspections.AsEnumerable().Reverse())
+    {
+        var localKey = key--;
+        <InspectionCard @key="localKey" Text="@item"/>
+    }
+}
+
+@code {
+
+    List<string> _inspections = new();
+
+    private void HandleNewInspection(string text)
+    {
+        _inspections.Add(text);
+    }
+
+}

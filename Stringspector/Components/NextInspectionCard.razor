@@ -1,0 +1,26 @@
+<Card>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+        <label for="newInput">
+            <div>What do you want to inspect next?</div>
+        </label>
+        <textarea id="newInput" @bind="_newInput" rows="3" tabindex="1"></textarea>
+        <button @onclick="HandleButtonClick" tabindex="2">STRINGSPECT</button>
+    </div>
+</Card>
+
+@code {
+
+    string _newInput = "";
+
+    [Parameter] public EventCallback<string> OnSubmit { get; set; }
+
+    private void HandleButtonClick()
+    {
+        if (_newInput.Length > 0)
+        {
+            OnSubmit.InvokeAsync(_newInput);
+            _newInput = "";
+        }
+    }
+
+}
