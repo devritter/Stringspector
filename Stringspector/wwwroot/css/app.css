@@ -13,6 +13,7 @@ textarea {
     color: inherit;
     border-radius: 5px;
     background-color: inherit;
+    resize: vertical;
 }
 
 .card {
@@ -20,6 +21,34 @@ textarea {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.inspection-results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.name-value {
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+}
+
+.name-value-name {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid whitesmoke;
+    padding: 5px;
+}
+
+.name-value-value {
+    padding: 5px;
+}
+
+.card-header {
+    background-color: lightgray;
+    border-bottom: 1px solid whitesmoke;
 }
 
 button {

@@ -1,0 +1,4 @@
+[*]
+csharp_prefer_braces = true
+
+# ReSharper properties

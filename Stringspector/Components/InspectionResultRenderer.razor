@@ -1,0 +1,10 @@
+<div class="name-value">
+    <div class="name-value-name">@Result.Header</div>
+    <div class="name-value-value">@Result.Body</div>
+</div>
+
+@code {
+
+    [Parameter] public required InspectionResult Result { get; set; }
+
+}

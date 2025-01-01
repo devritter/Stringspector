@@ -1,7 +1,24 @@
+@using Stringspector.Inspectors
 <Card>
     <textarea readonly style="width: 100%">@Text</textarea>
+    <div class="inspection-results">
+        @foreach (var item in _results)
+        {
+            <InspectionResultRenderer Result="item"/>
+        }
+    </div>
 </Card>
 
 @code {
+    List<InspectionResult> _results = new();
+
     [Parameter] public required string Text { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        _results.Clear();
+        _results.AddRange(new StringInspector().Inspect(Text));
+        base.OnParametersSet();
+    }
+
 }
