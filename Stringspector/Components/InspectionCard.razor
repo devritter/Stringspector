@@ -18,6 +18,7 @@
     {
         _results.Clear();
         _results.AddRange(new StringInspector().Inspect(Text));
+        _results.AddRange(new NumberInspector().Inspect(Text));
         base.OnParametersSet();
     }
 

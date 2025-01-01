@@ -90,5 +90,3 @@ public class StringInspector
             .Replace("\n", "[LF]");
     }
 }
-
-public record InspectionResult(string Header, string Body);
