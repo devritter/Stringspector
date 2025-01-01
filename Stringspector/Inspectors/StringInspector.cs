@@ -1,3 +1,4 @@
+using System.Text;
 using BlazingDev.BlazingExtensions;
 
 namespace Stringspector.Inspectors;
@@ -5,6 +6,32 @@ namespace Stringspector.Inspectors;
 public class StringInspector
 {
     public IEnumerable<InspectionResult> Inspect(string input)
+    {
+        if (input.Length == 1)
+        {
+            return InspectSingleCharacter(input[0]);
+        }
+
+        return InspectMultiCharacterString(input);
+    }
+
+    private IEnumerable<InspectionResult> InspectSingleCharacter(char c)
+    {
+        if (!char.IsAscii(c))
+        {
+            yield return new InspectionResult("Is ASCII", char.IsAscii(c).ToString());
+            var utf8ByteCount = Encoding.UTF8.GetByteCount(c.ToString());
+            if (utf8ByteCount > 1)
+            {
+                yield return new InspectionResult("UTF8 byte count", utf8ByteCount.ToString());
+            }
+        }
+
+        yield return new InspectionResult("char as int", ((int)c).ToString());
+        yield return new InspectionResult("char as hex", "0x" + Convert.ToString(c, 16).ToUpper());
+    }
+
+    private IEnumerable<InspectionResult> InspectMultiCharacterString(string input)
     {
         yield return new InspectionResult("Length", input.Length.ToString("N0"));
         var trimmed = input.Trim();
