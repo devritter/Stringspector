@@ -1,11 +1,11 @@
 <Card>
-    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <HStack>
         <label for="newInput">
             <div>What do you want to inspect next?</div>
         </label>
         <textarea id="newInput" @bind="_newInput" rows="3" tabindex="1"></textarea>
-        <button @onclick="HandleButtonClick" tabindex="2">STRINGSPECT</button>
-    </div>
+        <button @onclick="HandleButtonClick" tabindex="2">STRINGSPECT!</button>
+    </HStack>
 </Card>
 
 @code {

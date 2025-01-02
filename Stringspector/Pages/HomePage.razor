@@ -1,20 +1,25 @@
 ﻿@page "/"
 
-<h1>Stringspector</h1>
+<HStack>
+    <h1 class="mb-0">STRINGSPECTOR</h1>
 
-<NextInspectionCard OnSubmit="HandleNewInspection"/>
-<Samples OnSubmit="HandleNewInspection"/>
 
-@if (_inspections.Any())
-{
-    <h2>Inspections</h2>
-    var key = _inspections.Count;
-    foreach (var item in _inspections.AsEnumerable().Reverse())
+    <NextInspectionCard OnSubmit="HandleNewInspection"/>
+    <Samples OnSubmit="HandleNewInspection"/>
+
+    @if (_inspections.Any())
     {
-        var localKey = key--;
-        <InspectionCard @key="localKey" Text="@item"/>
+        <h2 class="mb-0">Inspections</h2>
+        var key = _inspections.Count;
+        <HStack CssClass="double-gap">
+            @foreach (var item in _inspections.AsEnumerable().Reverse())
+            {
+                var localKey = key--;
+                <InspectionCard @key="localKey" Text="@item"/>
+            }
+        </HStack>
     }
-}
+</HStack>
 
 @code {
 

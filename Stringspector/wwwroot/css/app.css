@@ -3,6 +3,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --white-05: rgba(255, 255, 255, 0.05);
+    --white-10: rgba(255, 255, 255, 0.1);
+    --white-15: rgba(255, 255, 255, 0.15);
+    --white-20: rgba(255, 255, 255, 0.2);
+    --white-30: rgba(255, 255, 255, 0.3);
+    --white-40: rgba(255, 255, 255, 0.4);
+}
+
 html {
     font-family: monospace;
     background-color: black;
@@ -13,15 +22,27 @@ textarea {
     color: inherit;
     border-radius: 5px;
     padding: 5px;
-    background-color: inherit;
+    background-color: transparent;
     resize: vertical;
 }
 
+textarea[readonly] {
+    border-color: var(--white-20);
+}
+
 .card {
-    border: 1px solid whitesmoke;
+    border: 1px solid var(--white-15);
+    background-color: var(--white-10);
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
+}
+
+.default-gap {
+    gap: 10px;
+}
+
+.double-gap {
+    gap: 20px;
 }
 
 .inspection-results {
@@ -33,35 +54,37 @@ textarea {
 }
 
 .name-value {
-    border: 1px solid silver;
+    background-color: var(--white-10);
     border-radius: 5px;
 }
 
 .name-value-name {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid silver;
-    padding: 5px;
+    background-color: var(--white-10);
+    padding: 5px 10px;
 }
 
 .name-value-value {
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 button {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--white-20);
     border: 1px solid whitesmoke;
     border-radius: 5px;
     color: inherit;
+    font-family: inherit;
+    font-size: 1.3em;
+    line-height: 1;
     padding: 5px;
     transition: 0.2s all;
 }
 
 button:hover, button:focus {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--white-30);
 }
 
 button:active {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--white-40);
     color: white;
 }
 
@@ -76,6 +99,10 @@ button:active {
 
 .sample-link:hover, .sample-link:active, .sample-link:focus {
     color: whitesmoke;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
 }
 
 /* default styles below */
