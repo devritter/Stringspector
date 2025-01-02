@@ -24,6 +24,7 @@
         _results.Clear();
         _results.AddRange(new StringInspector().Inspect(Text));
         _results.AddRange(new NumberInspector().Inspect(Text));
+        _results.AddRange(new MagicNumbersInspector().Inspect(Text));
         _results.AddRange(new ItemsInspector().Inspect(Text));
         _results.AddRange(new DecodingInspector().Inspect(Text));
         base.OnParametersSet();

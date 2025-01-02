@@ -30,7 +30,9 @@
         { "ASCII 3", "Ö" },
         { "Base64", Convert.ToBase64String(Encoding.UTF8.GetBytes("hello base64 world!")) },
         { "URL encoding", Uri.EscapeDataString("Hey, it's me, some url-incompatible text ;) ? &") },
-        { "HTTP encoding", HttpUtility.HtmlEncode("I <3 math signs & other <!-- cool --> characters!") }
+        { "HTTP encoding", HttpUtility.HtmlEncode("I <3 math signs & other <!-- cool --> characters!") },
+        { "HTTP status code", "403" },
+        { "data type ranges", "65535" }
     };
 
 }
