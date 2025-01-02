@@ -17,7 +17,7 @@ public class DecodingInspector
 
     private void CheckForBase64(List<InspectionResult> result, string text)
     {
-        if (text.Length % 4 == 0)
+        if (text.Length >= 12 && text.Length % 4 == 0)
         {
             try
             {

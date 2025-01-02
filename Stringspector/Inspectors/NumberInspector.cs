@@ -7,7 +7,11 @@ public class NumberInspector
         var isInteger = int.TryParse(text, out var asInteger);
         if (isInteger)
         {
-            yield return new InspectionResult("int as hex", "0x" + Convert.ToString(asInteger, 16).ToUpper());
+            if (asInteger > 9)
+            {
+                yield return new InspectionResult("int as hex", "0x" + Convert.ToString(asInteger, 16).ToUpper());
+            }
+
             var asCharacter = (char)asInteger;
             if (char.IsAscii(asCharacter))
             {
