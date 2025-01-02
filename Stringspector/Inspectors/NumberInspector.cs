@@ -66,7 +66,7 @@ public class NumberInspector
             if (asLong > oneYearTicks)
             {
                 var secondsSinceUnix = DateTime.UnixEpoch.AddMilliseconds(asLong);
-                yield return new InspectionResult("int as seconds since unix epoch / JS ticks",
+                yield return new InspectionResult("number as seconds since unix epoch / JS ticks",
                     secondsSinceUnix.ToString("o"));
             }
         }

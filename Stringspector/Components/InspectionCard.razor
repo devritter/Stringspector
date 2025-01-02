@@ -1,6 +1,11 @@
 @using Stringspector.Inspectors
+@{
+var linesAsString = _results.FirstOrDefault(x => x.Header == "Lines")?.Body ?? "2";
+var lines = int.Parse(linesAsString).Clamp(null, 10);
+}
+
 <Card>
-    <textarea readonly style="width: 100%">@Text</textarea>
+    <textarea readonly style="width: 100%" rows="@lines">@Text</textarea>
     <div class="inspection-results">
         @foreach (var item in _results)
         {
@@ -19,6 +24,7 @@
         _results.Clear();
         _results.AddRange(new StringInspector().Inspect(Text));
         _results.AddRange(new NumberInspector().Inspect(Text));
+    _results.AddRange(new ItemsInspector().Inspect(Text));
         base.OnParametersSet();
     }
 

@@ -33,7 +33,7 @@ public class StringInspector
 
     private IEnumerable<InspectionResult> InspectMultiCharacterString(string input)
     {
-        yield return new InspectionResult("Length", input.Length.ToString("N0"));
+        yield return new InspectionResult("Length", input.Length);
         var trimmed = input.Trim();
         foreach (var inspectionResult in InspectTrimming(input, trimmed))
         {
@@ -43,19 +43,19 @@ public class StringInspector
         var lines = input.Split('\n').Length;
         if (lines > 1)
         {
-            yield return new InspectionResult("Lines", lines.ToString("N0"));
+            yield return new InspectionResult("Lines", lines);
         }
 
         var whiteSpaces = input.Count(char.IsWhiteSpace);
         if (whiteSpaces > 0)
         {
-            yield return new InspectionResult("White Spaces", whiteSpaces.ToString("N0"));
+            yield return new InspectionResult("White Spaces", whiteSpaces);
         }
 
         var nonAscii = input.Where(x => !char.IsAscii(x)).ToList();
         if (nonAscii.Any())
         {
-            yield return new InspectionResult("Non-ASCII character count", nonAscii.Count.ToString("N0"));
+            yield return new InspectionResult("Non-ASCII character count", nonAscii.Count);
             yield return new InspectionResult("Non-ASCII characters", nonAscii.Distinct().StringJoin());
         }
     }
@@ -64,7 +64,7 @@ public class StringInspector
     {
         if (trimmed != input)
         {
-            yield return new InspectionResult("Trimmed Length", trimmed.Length.ToString("N0"));
+            yield return new InspectionResult("Trimmed Length", trimmed.Length);
             var trimmableStart = input.TakeWhile(char.IsWhiteSpace).StringJoin();
             var trimmableEnd = input.AsEnumerable().Reverse().TakeWhile(char.IsWhiteSpace).Reverse().StringJoin();
             trimmableStart = Xray(trimmableStart);
