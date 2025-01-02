@@ -1,7 +1,7 @@
 @using Stringspector.Inspectors
 @{
-var linesAsString = _results.FirstOrDefault(x => x.Header == "Lines")?.Body ?? "2";
-var lines = int.Parse(linesAsString).Clamp(null, 10);
+    var linesAsString = _results.FirstOrDefault(x => x.Header == "Lines")?.Body ?? "2";
+    var lines = int.Parse(linesAsString).Clamp(null, 10);
 }
 
 <Card>
@@ -24,7 +24,8 @@ var lines = int.Parse(linesAsString).Clamp(null, 10);
         _results.Clear();
         _results.AddRange(new StringInspector().Inspect(Text));
         _results.AddRange(new NumberInspector().Inspect(Text));
-    _results.AddRange(new ItemsInspector().Inspect(Text));
+        _results.AddRange(new ItemsInspector().Inspect(Text));
+        _results.AddRange(new DecodingInspector().Inspect(Text));
         base.OnParametersSet();
     }
 

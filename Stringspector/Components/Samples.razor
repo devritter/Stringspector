@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Text
+@using System.Web
+@{
     var space = " ";
 }
 
@@ -11,7 +13,7 @@
     }
 </div>
 
-@code { 
+@code {
 
     [Parameter] public EventCallback<string> OnSubmit { get; set; }
 
@@ -24,7 +26,11 @@
         { "number list 2", "10,30,50,   70" },
         { "number list 3", new double[] { 5.123, 4253, 34.1 }.Select(x => x.ToString()).StringJoin(Environment.NewLine) },
         { "ASCII 1", "13" },
-        { "ASCII 2", "A" }
+        { "ASCII 2", "A" },
+        { "ASCII 3", "Ö" },
+        { "Base64", Convert.ToBase64String(Encoding.UTF8.GetBytes("hello base64 world!")) },
+        { "URL encoding", Uri.EscapeDataString("Hey, it's me, some url-incompatible text ;) ? &") },
+        { "HTTP encoding", HttpUtility.HtmlEncode("I <3 math signs & other <!-- cool --> characters!") }
     };
 
 }
