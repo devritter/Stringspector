@@ -19,7 +19,7 @@ public class ItemsInspector
         if (max.Value >= 3)
         {
             var parts = text.BzSplit(max.Key);
-            yield return new InspectionResult("Items separator", max.Key.ToString());
+            yield return new InspectionResult("Items separator", max.Key.ToString().Xray());
             yield return new InspectionResult("Items count", max.Value);
 
             var distinctCount = parts.Distinct().Count();

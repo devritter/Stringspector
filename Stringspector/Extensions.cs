@@ -6,4 +6,13 @@ public static class Extensions
     {
         return string.Join("", chars);
     }
+
+    public static string Xray(this string input)
+    {
+        return input
+            .Replace(" ", "[SPACE]")
+            .Replace("\t", "[TAB]")
+            .Replace("\r", "[CR]")
+            .Replace("\n", "[LF]");
+    }
 }

@@ -67,8 +67,8 @@ public class StringInspector
             yield return new InspectionResult("Trimmed Length", trimmed.Length);
             var trimmableStart = input.TakeWhile(char.IsWhiteSpace).StringJoin();
             var trimmableEnd = input.AsEnumerable().Reverse().TakeWhile(char.IsWhiteSpace).Reverse().StringJoin();
-            trimmableStart = Xray(trimmableStart);
-            trimmableEnd = Xray(trimmableEnd);
+            trimmableStart = trimmableStart.Xray();
+            trimmableEnd = trimmableEnd.Xray();
             if (trimmableStart.HasContent())
             {
                 yield return new InspectionResult("Trimmable start", trimmableStart);
@@ -79,14 +79,5 @@ public class StringInspector
                 yield return new InspectionResult("Trimmable end", trimmableEnd);
             }
         }
-    }
-
-    private string Xray(string input)
-    {
-        return input
-            .Replace(" ", "[SPACE]")
-            .Replace("\t", "[TAB]")
-            .Replace("\r", "[CR]")
-            .Replace("\n", "[LF]");
     }
 }

@@ -65,6 +65,19 @@ button:active {
     color: white;
 }
 
+.samples {
+    color: silver;
+}
+
+.sample-link {
+    text-decoration: underline;
+    cursor: pointer; /* neede because of no href attribute */
+}
+
+.sample-link:hover, .sample-link:active, .sample-link:focus {
+    color: whitesmoke;
+}
+
 /* default styles below */
 
 .valid.modified:not([type=checkbox]) {

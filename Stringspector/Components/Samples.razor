@@ -1,0 +1,30 @@
+﻿@{
+    var space = " ";
+}
+
+<div class="samples">
+    Samples:
+    @foreach (var item in _samples)
+    {
+        @space
+        <a class="sample-link" @onclick="() => OnSubmit.InvokeAsync(item.Value)">@item.Key</a>
+    }
+</div>
+
+@code { 
+
+    [Parameter] public EventCallback<string> OnSubmit { get; set; }
+
+    static Dictionary<string, string> _samples = new()
+    {
+        { "JS ticks", "1735808308442" },
+        { "trimmable string", " hello world\t\r\n" },
+        { "text list", "check out how many distinct distinct distinct values you have here here here!" },
+        { "number list 1", "10 30 50 70" },
+        { "number list 2", "10,30,50,   70" },
+        { "number list 3", new double[] { 5.123, 4253, 34.1 }.Select(x => x.ToString()).StringJoin(Environment.NewLine) },
+        { "ASCII 1", "13" },
+        { "ASCII 2", "A" }
+    };
+
+}
