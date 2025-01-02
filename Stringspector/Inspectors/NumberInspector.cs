@@ -17,7 +17,7 @@ public class NumberInspector
             {
                 if (!char.IsControl(asCharacter))
                 {
-                    yield return new InspectionResult("int as char", asCharacter.ToString().Replace(" ", "SPACE"));
+                    yield return new InspectionResult("int as char", asCharacter.ToString().Xray());
                 }
                 else
                 {
@@ -32,7 +32,7 @@ public class NumberInspector
                         6 => "ACK",
                         7 => "BEL",
                         8 => "BS",
-                        9 => "HT",
+                        9 => "HT (Tab)",
                         10 => "LF",
                         11 => "VT",
                         12 => "FF",
@@ -49,7 +49,7 @@ public class NumberInspector
                         23 => "ETB",
                         24 => "CAN",
                         25 => "EM",
-                        26 => "SUM",
+                        26 => "SUB",
                         27 => "ESC",
                         28 => "FS",
                         29 => "GS",
